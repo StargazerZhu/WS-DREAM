@@ -1,9 +1,11 @@
 #! /usr/bin/env python
-#
-# Copyright (C) 2015, WS-DREAM, CUHK
-# License: MIT
+'''
+  Copyright (C) 2016, WS-DREAM, CUHK
+  License: MIT
 
-description = 'pywsrec - A python package to bechmark Web service QoS prediction approaches'
+'''
+
+description = 'WS-DREAM - A python package to benchmark Web service QoS prediction approaches'
 
 from distutils.core import setup, Extension
 # from setuptools import setup, find_packages
@@ -38,7 +40,6 @@ scripts = []
 py_inc = [get_python_inc()]
 
 #### NumPy include
-# np_lib = os.path.dirname(numpy.__file__)
 np_inc = [numpy.get_include()]
 
 #### cmdclass
@@ -48,14 +49,14 @@ cmdclass = {'build_py': build_py}
 ext_modules = []
 if use_cython:
     cmdclass.update({'build_ext': build_ext})
-    ext_modules += [Extension("pywsrec.PPCF.P_PMF", 
+    ext_modules += [Extension("wsdream.PPCF.P_PMF", 
                               ["pywsrec/PPCF/P_PMF/cP_PMF.cpp",
                               "pywsrec/PPCF/P_PMF/P_PMF.pyx"],
                               language='c++',
                               include_dirs=py_inc + np_inc),
-                    Extension("pywsrec.PPCF.P_UIPCC", 
-                              ["pywsrec/PPCF/P_UIPCC/cP_UIPCC.cpp",
-                              "pywsrec/PPCF/P_UIPCC/P_UIPCC.pyx"],
+                    Extension("wsdream.baseline.Average", 
+                              ["wsdream/PPCF/P_UIPCC/cP_UIPCC.cpp",
+                              "wsdream/PPCF/P_UIPCC/P_UIPCC.pyx"],
                               language='c++',
                               include_dirs=py_inc + np_inc)
                               ]
@@ -71,20 +72,13 @@ else:
                               include_dirs=py_inc + np_inc)
                               ]
 
-packages=['pywsrec', 'pywsrec.PPCF']
+packages=['wsdream', 'wsdream.baseline']
 
-classifiers = ['Development Status :: 5 - Production/Stable',
-               'Intended Audience :: Science/Research',
-               'License :: OSI Approved :: GNU General Public License (GPL)',
+classifiers = ['Intended Audience :: Science/Research',
+               'License :: OSI Approved :: MIT',
                'Programming Language :: C++',
                'Programming Language :: Python',
-               'Topic :: Scientific/Engineering :: Artificial Intelligence',
-               'Topic :: Scientific/Engineering :: Mathematics',
-               'Operating System :: POSIX :: Linux',
-               'Operating System :: POSIX :: BSD',
-               'Operating System :: MacOS',
-               'Operating System :: Microsoft :: Windows',
-               'Operating System :: POSIX'
+               'Topic :: Scientific/Engineering :: Artificial Intelligence'
                ]
 
 setup(name = 'pywsrec',
