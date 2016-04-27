@@ -42,7 +42,7 @@ def executeOneSetting(tensor, density, roundId, para):
     (numUser, numService, numTime) = tensor.shape
 
     # remove the entries of data to generate trainTensor and testTensor
-    (trainTensor, testTensor) = removeTensor(tensor, density, roundId, para) 
+    (trainTensor, testTensor) = evallib.removeTensor(tensor, density, roundId, para) 
 
     # invocation to the prediction function
     startTime = time.clock() # to record the running time for one round             
@@ -50,9 +50,9 @@ def executeOneSetting(tensor, density, roundId, para):
     runningTime = float(time.clock() - startTime) / numTime
 
     # evaluate the prediction error 
-    for i in xrange(numTime):
-        testMatrix = testTensor[:, :, i]
-        predictedMatrix = predictedTensor[:, :, i]
+    for sliceId in xrange(numTime):
+        testMatrix = testTensor[:, :, sliceId]
+        predictedMatrix = predictedTensor[:, :, sliceId]
         (testVecX, testVecY) = np.where(testMatrix)
         testVec = testMatrix[testVecX, testVecY]
         predVec = predictedMatrix[testVecX, testVecY]
@@ -63,7 +63,6 @@ def executeOneSetting(tensor, density, roundId, para):
         outFile = '%s%s_%s_result_%02d_%.2f_round%02d.tmp'%(para['outPath'], 
             para['dataName'], para['dataType'], sliceId + 1, density, roundId + 1)
         evallib.dumpresult(outFile, result)
-        logger.info('sliceId = %02d done.'%(sliceId + 1))
         
     logger.info('density=%.2f, %2d-round done.'%(density, roundId + 1))
     logger.info('----------------------------------------------')
