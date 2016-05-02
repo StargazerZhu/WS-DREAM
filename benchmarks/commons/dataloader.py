@@ -34,7 +34,7 @@ def load(para):
         fid.close()
         logger.info('Data size: %d users * %d services * %d timeslices'\
             %(dataMatrix.shape[0], dataMatrix.shape[1], dataMatrix.shape[2]))      
-    dataMatrix = preprocess(dataMatrix, para)
+    	dataMatrix = preprocess(dataMatrix, para)
     logger.info('Loading data done.')
     logger.info('----------------------------------------------') 
     return dataMatrix
