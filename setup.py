@@ -63,6 +63,11 @@ if use_cython:
                               ["wsdream/UIPCC/c_UIPCC.cpp",
                               "wsdream/UIPCC/UIPCC.pyx"],
                               language='c++',
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.NMF", 
+                              ["wsdream/NMF/c_NMF.cpp",
+                              "wsdream/NMF/NMF.pyx"],
+                              language='c++',
                               include_dirs=py_inc + np_inc)
                               ]
 
@@ -78,6 +83,10 @@ else:
                     Extension("wsdream.UIPCC", 
                               ["wsdream/UIPCC/c_UIPCC.cpp",
                               "wsdream/UIPCC/UIPCC.cpp"],
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.NMF", 
+                              ["wsdream/NMF/c_NMF.cpp",
+                              "wsdream/NMF/NMF.cpp"],
                               include_dirs=py_inc + np_inc)
                               ]
 
