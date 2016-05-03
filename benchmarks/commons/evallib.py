@@ -2,7 +2,7 @@
 # evallib.py: common functions for evaluator.py
 # Author: Jamie Zhu <jimzhu@GitHub>
 # Created: 2015/8/17
-# Last updated: 2016/5/3
+# Last updated: 2015/8/30
 ########################################################
 
 import numpy as np 
@@ -22,22 +22,6 @@ def evaluate(testMatrix, recoveredMatrix, para):
     estiVec = recoveredMatrix[testVecX, testVecY]
     evalResult = errMetric(testVec, estiVec, para['metrics'])
     return evalResult
-
-
-#======================================================#
-# Function to remove the entries of data tensor
-# Return the trainTensor and the corresponding testTensor
-#======================================================#
-def removeTensor(tensor, density, round, para):
-    numTime = tensor.shape[2]
-    trainTensor = np.zeros(tensor.shape)
-    testTensor = np.zeros(tensor.shape)
-    for i in range(numTime):
-        seedID = round + i * 100
-        (trainMatrix, testMatrix) = removeEntries(tensor[:, :, i], density, seedID)
-        trainTensor[:, :, i] = trainMatrix
-        testTensor[:, :, i] = testMatrix
-    return trainTensor, testTensor
 
 
 #======================================================#
@@ -74,10 +58,10 @@ def removeEntries(matrix, density, seedId):
 #======================================================#
 # Function to compute the evaluation metrics
 #======================================================#
-def errMetric(realVec, predVec, metrics):
+def errMetric(realVec, estiVec, metrics):
     result = []
-    absError = np.abs(predVec - realVec) 
-    mae = np.sum(absError)/absError.shape
+    absError = np.abs(estiVec - realVec) 
+    mae = np.average(absError)
     for metric in metrics:
         if 'MAE' == metric:
             result = np.append(result, mae)
@@ -89,12 +73,11 @@ def errMetric(realVec, predVec, metrics):
             result = np.append(result, rmse)
         if 'MRE' == metric or 'NPRE' == metric:
             relativeError = absError / realVec
-            relativeError = np.sort(relativeError)
             if 'MRE' == metric:
-                mre = np.median(relativeError)
+                mre = np.percentile(relativeError, 50)
                 result = np.append(result, mre)
             if 'NPRE' == metric:
-                npre = relativeError[np.floor(0.9 * relativeError.shape[0])] 
+                npre = np.percentile(relativeError, 90)
                 result = np.append(result, npre)
     return result
 
@@ -115,22 +98,21 @@ def dumpresult(outFile, result):
 #======================================================#
 # Process the raw result files 
 #======================================================#
-def summarizeResult(para, numTimeSlice, tag=''):
-    path = '%s%s%s_%s_result'%(para['outPath'], tag, para['dataName'], para['dataType'])
-    evalResults = np.zeros((len(para['density']), para['rounds'], len(para['metrics']), numTimeSlice)) 
-    timeResults = np.zeros((len(para['density']), para['rounds'], numTimeSlice))   
+def summarizeResult(para):
+    path = '%s%s_%s_result'%(para['outPath'], para['dataName'], para['dataType'])
+    evalResults = np.zeros((len(para['density']), para['rounds'], len(para['metrics']))) 
+    timeResults = np.zeros((len(para['density']), para['rounds']))   
 
     k = 0
     for den in para['density']:
         for rnd in xrange(para['rounds']):
-            for tid in xrange(numTimeSlice):
-                inputfile = path + '_%02d_%.2f_round%02d.tmp'%(tid + 1, den, rnd + 1)
-                with open(inputfile, 'rb') as fid:
-                    data = pickle.load(fid)
-                os.remove(inputfile)
-                (evalResults[k, rnd, :, tid], timeResults[k, rnd, tid]) = data
+            inputfile = path + '_%.2f_round%02d.tmp'%(den, rnd + 1)
+            with open(inputfile, 'rb') as fid:
+                data = pickle.load(fid)
+            os.remove(inputfile)
+            (evalResults[k, rnd, :], timeResults[k, rnd]) = data
         k += 1
-    saveSummaryResult(path, evalResults, timeResults, para) 
+    saveSummaryResult(path, evalResults, timeResults, para)  
 
 
 #======================================================#
@@ -146,63 +128,35 @@ def saveSummaryResult(outfile, result, timeinfo, para):
         fileID.write('|   %s  '%metric)
     fileID.write('\n')
     fileID.write('[Average]\n')
-    
     k = 0
     for den in para['density']:
-        den_result = result[k, :, :, :]
-        evalResults = np.average(den_result, axis=2)
         fileID.write('density=%.2f: '%den)
-        avgResult = np.average(evalResults, axis=0)
+        avgResult = np.average(result[k, :, :], axis=0)
         np.savetxt(fileID, np.matrix(avgResult), fmt='%.4f', delimiter='  ')
         print 'density=%.2f: '%den, avgResult
         k += 1
-
     fileID.write('\n[Standard deviation (std)]\n')
     k = 0
     for den in para['density']:
-        den_result = result[k, :, :, :]
-        evalResults = np.average(den_result, axis=2)
         fileID.write('density=%.2f: '%den)
-        np.savetxt(fileID, np.matrix(np.std(evalResults, axis=0)), fmt='%.4f', delimiter='  ')
+        np.savetxt(fileID, np.matrix(np.std(result[k, :, :], axis=0)), fmt='%.4f', delimiter='  ')
         k += 1
 
     fileID.write('\n======== Detailed results ========\n')
     k = 0
     for den in para['density']:
-        den_result = result[k, :, :, :]
         fileID.write('[density=%.2f, %2d rounds]\n'%(den, para['rounds']))
-        np.savetxt(fileID, np.matrix(np.average(den_result, axis=2)), fmt='%.4f', delimiter='  ')
-        fileID.write('\n')
-        k += 1
-    k = 0
-    for den in para['density']:
-        den_result = result[k, :, :, :]
-        fileID.write('[density=%.2f, %2d slices]\n'%(den, result.shape[3]))
-        np.savetxt(fileID, np.matrix(np.average(den_result, axis=0).T), fmt='%.4f', delimiter='  ')
+        np.savetxt(fileID, np.matrix(result[k, :, :]), fmt='%.4f', delimiter='  ')
         fileID.write('\n')
         k += 1
     fileID.close()
 
     if para['saveTimeInfo']:
         fileID = open(outfile + '_time.txt', 'w')
-        fileID.write('======== Summary ========\n')
         fileID.write('Average running time (second):\n')
         k = 0
         for den in para['density']:
-            den_time = timeinfo[k, :, :]
-            timeResults = np.average(den_time, axis=1)
             fileID.write('density=%.2f: '%den)
-            np.savetxt(fileID, np.matrix(np.average(timeResults)), fmt='%.4f', delimiter='  ')
+            np.savetxt(fileID, np.matrix(np.average(timeinfo[k, :])), fmt='%.4f', delimiter='  ')  
             k += 1
-        
-        fileID.write('\n======== Details ========\n')
-        k = 0
-        for den in para['density']:
-            den_time = timeinfo[k, :, :]
-            fileID.write('[density=%.2f, %2d slices]\n'%(den, timeinfo.shape[2]))
-            np.savetxt(fileID, np.matrix(np.average(den_time, axis=0)).T, fmt='%.4f', delimiter='  ')
-            fileID.write('\n')
-            k += 1
-
         fileID.close()
-

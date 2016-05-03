@@ -27,7 +27,7 @@ para = {'dataPath': '../../../data/',
 						 # to find the best eta at each iteration
 		'lambda': 200, # regularization parameter
 		'maxIter': 300, # the max iterations
-		'saveTimeInfo': True, # whether to keep track of the running time
+		'saveTimeInfo': False, # whether to keep track of the running time
 		'saveLog': True, # whether to save log into file
 		'debugMode': False, # whether to record the debug info
         'parallelMode': True # whether to leverage multiprocessing for speedup

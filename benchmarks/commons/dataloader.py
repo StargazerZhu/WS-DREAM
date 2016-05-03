@@ -17,7 +17,6 @@ def load(para):
     if para['dataName'] == 'dataset#1':
         datafile = para['dataPath'] + para['dataName'] + '/' + para['dataType'] + 'Matrix.txt'
         logger.info('Loading data: %s'%os.path.abspath(datafile))
-        logger.info('Loading data: %s'%os.path.abspath(datafile))
         dataMatrix = np.loadtxt(datafile)
         logger.info('Data size: %d users * %d services'\
             %(dataMatrix.shape[0], dataMatrix.shape[1]))

@@ -24,7 +24,7 @@ para = {'dataPath': '../../../data/',
 		'rounds': 20, # how many runs are performed at each matrix density
 		'topK': 10, # the parameter of TopK similar users or services
         'lambda': 0.8, # the combination coefficient of UPCC and IPCC
-		'saveTimeInfo': True, # whether to keep track of the running time
+		'saveTimeInfo': False, # whether to keep track of the running time
 		'saveLog': True, # whether to save log into file
 		'debugMode': False, # whether to record the debug info
         'parallelMode': True # whether to leverage multiprocessing for speedup
