@@ -68,7 +68,14 @@ if use_cython:
                               ["wsdream/NMF/c_NMF.cpp",
                               "wsdream/NMF/NMF.pyx"],
                               language='c++',
-                              include_dirs=py_inc + np_inc)
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.EMF", 
+                              ["wsdream/EMF/c_EMF.cpp",
+                              "wsdream/EMF/c_UIPCC.cpp",
+                              "wsdream/EMF/EMF.pyx"],
+                              language='c++',
+                              include_dirs=py_inc + np_inc,
+                              extra_compile_args=["-O2"])
                               ]
 
 else:
@@ -87,6 +94,11 @@ else:
                     Extension("wsdream.NMF", 
                               ["wsdream/NMF/c_NMF.cpp",
                               "wsdream/NMF/NMF.cpp"],
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.EMF", 
+                              ["wsdream/EMF/c_EMF.cpp",
+                              "wsdream/EMF/c_UIPCC.cpp",
+                              "wsdream/EMF/EMF.cpp"],
                               include_dirs=py_inc + np_inc)
                               ]
 

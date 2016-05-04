@@ -1,8 +1,8 @@
 /********************************************************
- * UIPCC.h: header file of UIPCC.cpp
+ * c_UIPCC.h
  * Author: Jamie Zhu <jimzhu@GitHub>
  * Created: 2014/4/29
- * Last updated: 2014/4/29
+ * Last updated: 2014/5/14
 ********************************************************/
 
 #include <utility>
@@ -10,17 +10,12 @@
 #include <map>
 using namespace std; 
 
-void c_UPCC(double *removedData, double *uMean, int numUser, int numService, 
-	int topK, double *predData);
+/* Compute similairty matrix */
+vector<vector<pair<int, double> > > getPCCMatrix(double **removedMatrix, 
+	int numUser, int numService, int topK);
 
 /* Transform a vector into a matrix */ 
 double **vector2Matrix(double *vector, int row, int col);
-
-/* Allocate memory for a 2D array */
-double **createMatrix(int row, int col);
-
-/* Free memory for a 2D array */ 
-void deleteMatrix(double **ptr); 
 
 /* Compute pcc value between two vectors */
 double getPCC(double *uA, double *uB, double meanA, double meanB, int numUser);
@@ -29,7 +24,17 @@ double getPCC(double *uA, double *uB, double meanA, double meanB, int numUser);
 bool cmpPairbyValue(const pair<int, double>& lhs, const pair<int, double>& rhs);
 vector<pair<int, double> > sortMapByValue(const map<int, double>& pccMap);
 
+/* Allocate memory for a 1D array */
+double *createVector(int size);
 
+/* Free memory for a 1D array */ 
+void deleteVector(double *ptr); 
+
+/* Allocate memory for a 2D array */
+double **createMatrix(int row, int col);
+
+/* Free memory for a 2D array */ 
+void deleteMatrix(double **ptr); 
 
 
 

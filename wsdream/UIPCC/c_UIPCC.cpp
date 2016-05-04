@@ -80,7 +80,7 @@ void c_UPCC(double *removedData, double *uMean, int numUser, int numService,
 		}
   	}
 
-  	delete2DMatrix(pccMatrix);
+  	deleteMatrix(pccMatrix);
     delete ((char*) predMatrix);
     delete ((char*) removedMatrix);
 }
@@ -113,7 +113,7 @@ double **createMatrix(int row, int col) {
     return matrix;
 }
 
-void delete2DMatrix(double **ptr) {
+void deleteMatrix(double **ptr) {
 	delete ptr[0];
 	delete ptr;
 }
