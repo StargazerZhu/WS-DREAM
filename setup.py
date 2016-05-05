@@ -75,6 +75,12 @@ if use_cython:
                               "wsdream/EMF/EMF.pyx"],
                               language='c++',
                               include_dirs=py_inc + np_inc,
+                              extra_compile_args=["-O2"]),
+                    Extension("wsdream.BiasedMF", 
+                              ["wsdream/BiasedMF/c_BiasedMF.cpp",
+                              "wsdream/BiasedMF/BiasedMF.pyx"],
+                              language='c++',
+                              include_dirs=py_inc + np_inc,
                               extra_compile_args=["-O2"])
                               ]
 
@@ -99,6 +105,10 @@ else:
                               ["wsdream/EMF/c_EMF.cpp",
                               "wsdream/EMF/c_UIPCC.cpp",
                               "wsdream/EMF/EMF.cpp"],
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.BiasedMF", 
+                              ["wsdream/BiasedMF/c_BiasedMF.cpp",
+                              "wsdream/BiasedMF/BiasedMF.cpp"],
                               include_dirs=py_inc + np_inc)
                               ]
 

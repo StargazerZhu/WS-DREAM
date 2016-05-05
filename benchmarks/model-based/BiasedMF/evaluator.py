@@ -9,7 +9,7 @@ import numpy as np
 import time
 from commons.utils import logger # import from ../../commons
 from commons import evallib # import from ../../commons
-from wsdream import PMF
+from wsdream import BiasedMF
 from scipy import stats
 import multiprocessing
 
@@ -45,7 +45,7 @@ def executeOneSetting(matrix, density, roundId, para):
 
     # QoS prediction
     startTime = time.clock() # to record the running time for one round             
-    predictedMatrix = PMF.predict(trainMatrix, para) 
+    predictedMatrix = BiasedMF.predict(trainMatrix, para) 
     runningTime = float(time.clock() - startTime)
 
     # evaluate the estimation error  
@@ -59,5 +59,4 @@ def executeOneSetting(matrix, density, roundId, para):
     
     logger.info('density=%.2f, %2d-round done.'%(density, roundId + 1))
     logger.info('----------------------------------------------')
-
 
