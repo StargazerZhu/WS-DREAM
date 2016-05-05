@@ -25,9 +25,6 @@ Note that the experimental results are provided with the metrics (MAE, NMAE,
 RMSE, MRE, NPRE). Each experiment is run for 20 times and the average result 
 (including std value) is reported. 
 
-
-
-
 ----------------------------------------------------------------------------
 Reference and citation
 ----------------------------------------------------------------------------
