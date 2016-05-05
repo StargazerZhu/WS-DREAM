@@ -50,3 +50,32 @@ def preprocess(matrix, para):
     elif para['dataType'] == 'tp':
         matrix = np.where(matrix == 0, -1, matrix)
     return matrix
+
+
+#======================================================#
+# Function to load the service provider and country information
+#======================================================#
+def loadServInfo(para):
+    wsLocFile = para['dataPath'] + para['dataName'] + '/' + 'wslist.txt'
+    data = np.genfromtxt(wsLocFile, dtype=np.str, comments='$', 
+        delimiter='\t', skip_header=2)
+    wsProvider = data[:, 2]
+    wsCountry = data[:, 4]
+    providerSet = set(wsProvider)
+    countrySet = set(wsCountry)
+    providerDict = {}
+    countryDict = {}
+    cnt = 0
+    for provider in providerSet:
+        providerDict[provider] = cnt
+        cnt += 1
+    cnt = 0
+    for country in countrySet:
+        countryDict[country] = cnt
+        cnt += 1
+        
+    wsInfoList = np.zeros((data.shape[0], 2))
+    for i in xrange(data.shape[0]):
+        wsInfoList[i, :] = [providerDict[wsProvider[i]], countryDict[wsCountry[i]]]
+    return wsInfoList
+

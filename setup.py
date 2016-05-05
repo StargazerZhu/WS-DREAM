@@ -81,6 +81,12 @@ if use_cython:
                               "wsdream/BiasedMF/BiasedMF.pyx"],
                               language='c++',
                               include_dirs=py_inc + np_inc,
+                              extra_compile_args=["-O2"]),
+                    Extension("wsdream.LN_LFM", 
+                              ["wsdream/LN_LFM/c_LN_LFM.cpp",
+                              "wsdream/LN_LFM/LN_LFM.pyx"],
+                              language='c++',
+                              include_dirs=py_inc + np_inc,
                               extra_compile_args=["-O2"])
                               ]
 
@@ -109,6 +115,10 @@ else:
                     Extension("wsdream.BiasedMF", 
                               ["wsdream/BiasedMF/c_BiasedMF.cpp",
                               "wsdream/BiasedMF/BiasedMF.cpp"],
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.LN_LFM", 
+                              ["wsdream/BiasedMF/c_LN_LFM.cpp",
+                              "wsdream/BiasedMF/LN_LFM.cpp"],
                               include_dirs=py_inc + np_inc)
                               ]
 
