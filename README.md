@@ -5,7 +5,7 @@ WS-DREAM is a package of open source-code and datasets to benchmark QoS-driven s
 With both datasets and source code publicly released, WS-DREAM repository would allow ease of reproducing the existing approaches, and potentially inspires more research efforts in this area. Specifically, for future research on QoS prediction of Web services, you do not need to write your own program from scratch. The WS-DREAM framework can be easily extended to new implementations. This is exactly the goal of maintaining this repository.
 
 
-## Main publications about WS-DREAM
+## Publications About WS-DREAM
 
 1. Zibin Zheng, Yilei Zhang, Michael R. Lyu, "Investigating QoS of Real-World Web Services," *IEEE Trans. Services Computing (TSC)*, 2014.
 
@@ -34,30 +34,18 @@ With both datasets and source code publicly released, WS-DREAM repository would 
 
 - Neighbourhood-based approaches
 
-  - UIPCC: [benchmarks/neighbourhood-based/UIPCC]
+  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010): [benchmarks/neighbourhood-based/UIPCC]
   
-    * Zibin Zheng, Hao Ma, Michael R. Lyu, and Irwin King, "[WSRec: A Collaborative Filtering Based Web Service Recommender System](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5175854&tag=1)," in Proc. of IEEE International Conference on Web Services (ICWS), 2009. 
-
-    *  Zibin Zheng, Hao Ma, Michael R. Lyu, and Irwin King, "[QoS-Aware Web Service Recommendation by Collaborative Filtering](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010)," IEEE Transactions on Services Computing (TSC), 2011.
-
-  - ADF: [benchmarks/neighbourhood-based/ADF]
-
-   * Jian Wu, Liang Chen, Yipeng Feng, Zibin Zheng, Meng Chu Zhou, and Zhaohui Wu, "[Predicting Quality of Service for Selection by Neighborhood-Based Collaborative Filtering](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755)," IEEE Transactions on Systems, Man, and Cybernetics: Systems (TSMC), 2013.
+  - [ADF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755): [benchmarks/neighbourhood-based/ADF]
   
-  - NRCF[benchmarks/neighbourhood-based/NRCF]
-
-    * Huifeng Sun, Zibin Zheng, Junliang Chen, and Michael R. Lyu, "[Personalized Web Service Recommendation via Normal Recovery Collaborative Filtering](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1)," IEEE Transactions on Services Computing (TSC), 2013. 
+  - [NRCF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1): [benchmarks/neighbourhood-based/NRCF]
 
 - Model-based approaches
-  - PMF \(a.k.a. Regularized SVD): [benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/wsdream-dev/benchmarks/model-based/PMF) 
+  - [PMF](http://dl.acm.org/citation.cfm?id=2430548) \(a.k.a. Regularized SVD): [benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/wsdream-dev/benchmarks/model-based/PMF) 
 
-    * Zibin Zheng, and Michael R. Lyu, "[Personalized Reliability Prediction of Web Services](http://dl.acm.org/citation.cfm?id=2430548)," ACM Transactions on Software Engineering and Methodology (TOSEM), 2013.
+  - [NMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756): [[benchmarks/model-based/NMF](https://github.com/WS-DREAM/WSRec/tree/master/NMF)]
 
-  - NMF: (https://github.com/WS-DREAM/WSRec/tree/master/NMF) 
-
-  [Zhang et al., [SRDS'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756)]
-
-  - [BiasedMF](https://github.com/WS-DREAM/WSRec/tree/master/Biased_MF) [Koren et al., KDD'08][Yu et al., [SCC'14](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523)]
+  - [BiasedMF](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523): [[benchmarks/model-based/BiasedMF]()]
 
 - Hybrid approaches  
   - [CloudPred](https://github.com/WS-DREAM/WSRec/tree/master/CloudPred) [Zhang et al., [SRDS'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756)]
