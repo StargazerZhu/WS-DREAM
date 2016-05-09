@@ -7,17 +7,17 @@ With both datasets and source code publicly released, WS-DREAM repository would 
 
 ## Publications About WS-DREAM
 
-1. Zibin Zheng, Yilei Zhang, Michael R. Lyu, "Investigating QoS of Real-World Web Services," *IEEE Trans. Services Computing (TSC)*, 2014.
+1. Zibin Zheng, Yilei Zhang, Michael R. Lyu, "[Investigating QoS of Real-World Web Services](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6357180)," *IEEE Trans. Services Computing (TSC)*, 2014.
 
-1. Jieming Zhu, Pinjia He, Zibin Zheng, Michael R. Lyu, "Towards Online, Accurate, and Scalable QoS Prediction for Runtime Service Adaptation," in *Proc. of IEEE International Conference on Distributed Computing Systems (ICDCS)*, 2014.
+1. Jieming Zhu, Pinjia He, Zibin Zheng, Michael R. Lyu, "[Towards Online, Accurate, and Scalable QoS Prediction for Runtime Service Adaptation](http://jiemingzhu.github.io/pub/jmzhu_icdcs2014.pdf)," in *Proc. of IEEE International Conference on Distributed Computing Systems (ICDCS)*, 2014.
 
-1. Zibin Zheng, Michael R. Lyu, "Collaborative Reliability Prediction of Service-Oriented Systems," in *Proc. of ACM/IEEE International Conference on Software Engineering (ICSE)*, 2010.
+1. Zibin Zheng, Michael R. Lyu, "[Collaborative Reliability Prediction of Service-Oriented Systems](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6062071)," in *Proc. of ACM/IEEE International Conference on Software Engineering (ICSE)*, 2010. [**ACM SIGSOFT Distinguished Paper Award**]
 
-1. Zibin Zheng, Yilei Zhang, Michael R. Lyu, "Distributed QoS Evaluation for Real-World Web Services," in *Proc. of IEEE International Conference on Web Services (ICWS)*, 2010.
+1. Zibin Zheng, Yilei Zhang, Michael R. Lyu, "[Distributed QoS Evaluation for Real-World Web Services](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5552800)," in *Proc. of IEEE International Conference on Web Services (ICWS)*, 2010. [**Best Student Paper Award**]
 
-1. Zibin Zheng, Hao Ma, Michael R. Lyu, Irwin King, "WSRec: A Collaborative Filtering based Web Service Recommender System," in *Proc. of IEEE International Conference on Web Services (ICWS)*, 2009.
+1. Zibin Zheng, Hao Ma, Michael R. Lyu, Irwin King, "[WSRec: A Collaborative Filtering based Web Service Recommender System](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5175854)," in *Proc. of IEEE International Conference on Web Services (ICWS)*, 2009.
 
-1. Zibin Zheng, Michael R. Lyu, "WS-DREAM: A distributed Reliability Assessment Mechanism for Web Services," in *Proc. of IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)*, 2008.
+1. Zibin Zheng, Michael R. Lyu, "[WS-DREAM: A distributed Reliability Assessment Mechanism for Web Services](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4630108)," in *Proc. of IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)*, 2008.
 
 ##Related Links
 - A list of papers that use or cite WS-DREAM: [http://wsdream.github.io/bibliography](https://github.com/wsdream/wsdream-docs/blob/master/biblist.rst)
@@ -28,71 +28,50 @@ With both datasets and source code publicly released, WS-DREAM repository would 
 
 ##Code Archive
 
-- Baseline approaches
+####Baseline approaches
   - UMEAN: [benchmarks/baseline/UMEAN]
   - IMEAN: [benchmarks/baseline/UMEAN]
 
-- Neighbourhood-based approaches
-
-  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010): [benchmarks/neighbourhood-based/UIPCC]
-  
-  - [ADF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755): [benchmarks/neighbourhood-based/ADF]
-  
-  - [NRCF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1): [benchmarks/neighbourhood-based/NRCF]
+#####Neighbourhood-based approaches
+  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/neighbourhood-based/UIPCC](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/UIPCC)]
+  - [ADF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755 "Wu et al., TSMC'2013"): [[benchmarks/neighbourhood-based/ADF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/ADF)]
+  - [NRCF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1 "Sun et al., TSC'2013"): [[benchmarks/neighbourhood-based/NRCF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/NRCF)]
 
 - Model-based approaches
-  - [PMF](http://dl.acm.org/citation.cfm?id=2430548) \(a.k.a. Regularized SVD): [benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/wsdream-dev/benchmarks/model-based/PMF) 
-
-  - [NMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756): [[benchmarks/model-based/NMF](https://github.com/WS-DREAM/WSRec/tree/master/NMF)]
-
-  - [BiasedMF](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523): [[benchmarks/model-based/BiasedMF]()]
+  - [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013") \(a.k.a. Regularized SVD): [benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/PMF) 
+  - [NMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/model-based/NMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/NMF)]
+  - [BiasedMF](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/BiasedMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/BiasedMF)]
+  - [LN-LFM](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/LN_LFM](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/LN_LFM)]
 
 - Hybrid approaches  
-  - [CloudPred](https://github.com/WS-DREAM/WSRec/tree/master/CloudPred) [Zhang et al., [SRDS'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756)]
-
-  - [EMF](https://github.com/WS-DREAM/WSRec/tree/master/EMF) [Lo et al., [SCC'12](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6274140)]
-
-  - [NIMF](https://github.com/WS-DREAM/WSRec/tree/master/NIMF) [Zheng et al., [TSC'13](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122009)]
-
-  - [LN-LFM](https://github.com/WS-DREAM/WSRec/tree/master/LN_LFM) [Yu et al., [SCC'14](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523)]
+  - [CloudPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/hybrid/CloudPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/CloudPred)]
+  - [EMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6274140 "Lo et al., SCC'2012"): [[benchmarks/hybrid/EMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/EMF)]
+  - [NIMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122009 "Zheng et al., TSC'2013"): [[benchmarks/hybrid/NIMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/NIMF)]
 
 - Location-aware approaches
-  - [RegionKNN](https://github.com/WS-DREAM/WSRec/tree/master/Location-aware/RegionKNN) [Chen et al., [ICWS'10](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5552807)]
-
-  - [LACF](https://github.com/WS-DREAM/WSRec/tree/master/Location-aware/LACF) [Tang et al., [ICWS'12](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257808)]
-
-  - [LBR](https://github.com/WS-DREAM/WSRec/tree/master/Location-aware/LBR) [Lo et al., [ICWS'12](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257841)]
-
-  - [HMF](https://github.com/WS-DREAM/WSRec/tree/master/Location-aware/HMF) [He et al., [ICWS'14](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6928911)]
-
-  - [LoRec](https://github.com/WS-DREAM/WSRec/tree/master/Location-aware/LoRec) [Chen et al., [TPDS'14](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6684151)]
+  - [RegionKNN](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5552807 "Chen et al., ICWS'2010"): [[benchmarks/location-aware/RegionKNN](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/RegionKNN)]
+  - [LACF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257808 "Tang et al., ICWS'2012"): [[benchmarks/location-aware/LACF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LACF)]
+  - [LBR](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257841 "Lo et al., ICWS'2012"): [[benchmarks/location-aware/LBR](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LBR)]
+  - [HMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6928911 "He et al., ICWS'2014"): [[benchmarks/location-aware/HMF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/HMF)]
+  - [LoRec](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6684151 "Chen et al., TPDS'2014"): [[benchmarks/location-aware/LoRec](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LoRec)]
 
 - Time-aware approaches
-  - Average: [benchmarks/time-aware/Baseline]
-
-  - [UIPCC](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/UIPCC) [Zheng et al., [ICWS'09](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5175854&tag=1), [TSC'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010)] \(a.k.a. WSRec, including UMEAN, IMEAN, UPCC, IPCC) (customized for time-aware dataset#2)
-  
-  - [PMF](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/PMF) [Salakhutdinov et al., NIPS'07][Zheng et al., [TSC'13](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122009)] \(a.k.a. Regularized SVD or RSVD) (customized for time-aware dataset#2)
-  
-  - [TF](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/TF) [Zhang et al., [ISSRE'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1)]
-  
-  - [WSPred](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/WSPred) [Zhang et al., [ISSRE'11](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1)]
-  
-  - [CLUS](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/CLUS) [Silic et al., [FSE'13](http://dl.acm.org/citation.cfm?id=2491424), [TSC'15](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6874541)]  
-  
-  - [NTF](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/NTF) [Zhang et al., [WWW'14](http://dl.acm.org/citation.cfm?id=2568001)]
-  
-  - [TD-WSRec](https://github.com/WS-DREAM/WSRec/tree/master/Time-aware/TD-WSRec) [Hu et al., [ICWS'14](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6928878)] \(under testing, coming soon...now available upon request)
+  - Average: [[benchmarks/time-aware/Baseline](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/Baseline)]
+  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/time-aware/UIPCC](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/UIPCC)]
+  - [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013"): [[benchmarks/time-aware/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/PMF)]
+  - [TF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/TF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/TF)] 
+  - [WSPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/WSPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/WSPred)]  
+  - [CLUS](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6874541 "Silic et al., FSE'2013"): [[benchmarks/time-aware/CLUS](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/CLUS)]
+  - [NTF](http://dl.acm.org/citation.cfm?id=2568001 "Zhang et al., WWW'2014"): [[benchmarks/time-aware/NTF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/NTF)]
+  - [TD-WSRec](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6928878 "Hu et al., ICWS'14"): [benchmarks/time-aware/TD_WSRec] 
   
 - Online prediction approaches
-  - [AMF](https://github.com/WS-DREAM/WSRec/tree/master/Online-prediction/AMF) [Zhu et al., [ICDCS'14](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6888908&tag=1)] \(under testing, coming soon...) ([an early version in Matlab](https://github.com/WS-DREAM/AMF_pack))
-  
-  - [OPred](https://github.com/WS-DREAM/WSRec/tree/master/Online-prediction/OPred) [Zhang et al., [TSMC'14](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6720144)] \(under testing, coming soon...now available upon request)
+  - [AMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6888908&tag=1 "Zhu et al., ICDCS'2014"): [[benchmarks/online/AMF](https://github.com/wsdream/AMF)] 
+  - [OPred](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6720144 "Zhang et al., TSMC'2014"): [benchmarks/online/OPred]
 
 - Ranking-based approaches
-  - [GreedyRank](https://github.com/WS-DREAM/WSRec/tree/master/Ranking-based/GreedyRank) [Zheng et al., [SRDS'10](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5623393)] 
-  
-  - [CloudRank](https://github.com/WS-DREAM/WSRec/tree/master/Ranking-based/CloudRank) [Zheng et al., [SRDS'10](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5623393), [TPDS'13](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6320550)] 
+  - [GreedyRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5623393 "Zheng et al., SRDS'2010"): [[benchmarks/ranking-based/GreedyRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/GreedyRank)]  
+  - [CloudRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6320550 "Zheng et al., TPDS'2013"): [[benchmarks/ranking-based/CloudRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/CloudRank)] 
 
 
 ##Dependencies
@@ -111,7 +90,7 @@ The algorithms in WS-DREAM are mostly implemented in C++ and further wrapped up 
     
 	Download the repo: `git clone https://github.com/wsdream/WS-DREAM.git`,
   
-  then install the package `python setup.py install --user`.    
+  then install the package `python setup.py install --user`. 
 
 2. Change directory `cd` to `"benchmarks/"`, and configure the parameters in benchmark scripts
   
