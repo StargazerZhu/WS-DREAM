@@ -9,7 +9,7 @@ description = 'WS-DREAM - A python package to benchmark QoS prediction approache
 
 from distutils.core import setup, Extension
 # from setuptools import setup, find_packages
-import os
+import os, sys
 import os.path
 import numpy
 from distutils.sysconfig import *
@@ -27,6 +27,12 @@ except ImportError:
    use_cython = False
 else:
    use_cython = True
+
+if sys.version_info[0] == 3:
+    REQUIREMENTS = open('requirements.txt', encoding='utf-8').readlines()
+else:
+    REQUIREMENTS = open('requirements.txt').readlines()
+REQUIREMENTS = [req.rstrip() for req in REQUIREMENTS]
 
 extra_compile_args = ['-O2']
 
@@ -157,7 +163,8 @@ setup(name = 'wsdream',
       cmdclass=cmdclass,
       ext_modules=ext_modules,
       scripts=scripts,
-      data_files=data_files
+      data_files=data_files,
+      install_requires=REQUIREMENTS
       )
 
 print('==============================================')

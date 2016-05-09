@@ -29,49 +29,49 @@ With both datasets and source code publicly released, WS-DREAM repository would 
 ##Code Archive
 
 ####Baseline approaches
-  - UMEAN: [benchmarks/baseline/UMEAN]
-  - IMEAN: [benchmarks/baseline/UMEAN]
+- UMEAN: [benchmarks/baseline/UMEAN]
+- IMEAN: [benchmarks/baseline/UMEAN]
 
-#####Neighbourhood-based approaches
-  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/neighbourhood-based/UIPCC](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/UIPCC)]
-  - [ADF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755 "Wu et al., TSMC'2013"): [[benchmarks/neighbourhood-based/ADF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/ADF)]
-  - [NRCF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1 "Sun et al., TSC'2013"): [[benchmarks/neighbourhood-based/NRCF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/NRCF)]
+####Neighbourhood-based approaches
+- [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/neighbourhood-based/UIPCC](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/UIPCC)]
+- [ADF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6301755 "Wu et al., TSMC'2013"): [[benchmarks/neighbourhood-based/ADF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/ADF)]
+- [NRCF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6338940&tag=1 "Sun et al., TSC'2013"): [[benchmarks/neighbourhood-based/NRCF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/NRCF)]
 
-- Model-based approaches
-  - [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013") \(a.k.a. Regularized SVD): [benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/PMF) 
-  - [NMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/model-based/NMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/NMF)]
-  - [BiasedMF](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/BiasedMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/BiasedMF)]
-  - [LN-LFM](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/LN_LFM](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/LN_LFM)]
+####Model-based approaches
+- [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013") \(a.k.a. Regularized SVD): [[benchmarks/model-based/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/PMF)]
+- [NMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/model-based/NMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/NMF)]
+- [BiasedMF](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/BiasedMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/BiasedMF)]
+- [LN-LFM](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6930523 "Yu et al., SCC'2014"): [[benchmarks/model-based/LN_LFM](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/model-based/LN_LFM)]
 
-- Hybrid approaches  
-  - [CloudPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/hybrid/CloudPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/CloudPred)]
-  - [EMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6274140 "Lo et al., SCC'2012"): [[benchmarks/hybrid/EMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/EMF)]
-  - [NIMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122009 "Zheng et al., TSC'2013"): [[benchmarks/hybrid/NIMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/NIMF)]
+####Hybrid approaches  
+- [CloudPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6076756 "Zhang et al., SRDS'2011"): [[benchmarks/hybrid/CloudPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/CloudPred)]
+- [EMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6274140 "Lo et al., SCC'2012"): [[benchmarks/hybrid/EMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/EMF)]
+- [NIMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122009 "Zheng et al., TSC'2013"): [[benchmarks/hybrid/NIMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/hybrid/NIMF)]
 
-- Location-aware approaches
-  - [RegionKNN](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5552807 "Chen et al., ICWS'2010"): [[benchmarks/location-aware/RegionKNN](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/RegionKNN)]
-  - [LACF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257808 "Tang et al., ICWS'2012"): [[benchmarks/location-aware/LACF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LACF)]
-  - [LBR](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257841 "Lo et al., ICWS'2012"): [[benchmarks/location-aware/LBR](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LBR)]
-  - [HMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6928911 "He et al., ICWS'2014"): [[benchmarks/location-aware/HMF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/HMF)]
-  - [LoRec](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6684151 "Chen et al., TPDS'2014"): [[benchmarks/location-aware/LoRec](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LoRec)]
+####Location-aware approaches
+- [RegionKNN](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5552807 "Chen et al., ICWS'2010"): [[benchmarks/location-aware/RegionKNN](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/RegionKNN)]
+- [LACF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257808 "Tang et al., ICWS'2012"): [[benchmarks/location-aware/LACF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LACF)]
+- [LBR](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6257841 "Lo et al., ICWS'2012"): [[benchmarks/location-aware/LBR](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LBR)]
+- [HMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6928911 "He et al., ICWS'2014"): [[benchmarks/location-aware/HMF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/HMF)]
+- [LoRec](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6684151 "Chen et al., TPDS'2014"): [[benchmarks/location-aware/LoRec](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Location-aware/LoRec)]
 
-- Time-aware approaches
-  - Average: [[benchmarks/time-aware/Baseline](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/Baseline)]
-  - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/time-aware/UIPCC](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/UIPCC)]
-  - [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013"): [[benchmarks/time-aware/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/PMF)]
-  - [TF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/TF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/TF)] 
-  - [WSPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/WSPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/WSPred)]  
-  - [CLUS](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6874541 "Silic et al., FSE'2013"): [[benchmarks/time-aware/CLUS](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/CLUS)]
-  - [NTF](http://dl.acm.org/citation.cfm?id=2568001 "Zhang et al., WWW'2014"): [[benchmarks/time-aware/NTF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/NTF)]
-  - [TD-WSRec](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6928878 "Hu et al., ICWS'14"): [benchmarks/time-aware/TD_WSRec] 
+####Time-aware approaches
+- Average: [[benchmarks/time-aware/Baseline](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/Baseline)]
+- [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/time-aware/UIPCC](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/UIPCC)]
+- [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013"): [[benchmarks/time-aware/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/PMF)]
+- [TF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/TF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/TF)] 
+- [WSPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/WSPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/WSPred)]  
+- [CLUS](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6874541 "Silic et al., FSE'2013"): [[benchmarks/time-aware/CLUS](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/CLUS)]
+- [NTF](http://dl.acm.org/citation.cfm?id=2568001 "Zhang et al., WWW'2014"): [[benchmarks/time-aware/NTF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/NTF)]
+- [TD-WSRec](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6928878 "Hu et al., ICWS'14"): [benchmarks/time-aware/TD_WSRec] 
   
-- Online prediction approaches
-  - [AMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6888908&tag=1 "Zhu et al., ICDCS'2014"): [[benchmarks/online/AMF](https://github.com/wsdream/AMF)] 
-  - [OPred](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6720144 "Zhang et al., TSMC'2014"): [benchmarks/online/OPred]
+####Online prediction approaches
+- [AMF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6888908&tag=1 "Zhu et al., ICDCS'2014"): [[benchmarks/online/AMF](https://github.com/wsdream/AMF)] 
+- [OPred](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6720144 "Zhang et al., TSMC'2014"): [benchmarks/online/OPred]
 
-- Ranking-based approaches
-  - [GreedyRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5623393 "Zheng et al., SRDS'2010"): [[benchmarks/ranking-based/GreedyRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/GreedyRank)]  
-  - [CloudRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6320550 "Zheng et al., TPDS'2013"): [[benchmarks/ranking-based/CloudRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/CloudRank)] 
+####Ranking-based approaches
+- [GreedyRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5623393 "Zheng et al., SRDS'2010"): [[benchmarks/ranking-based/GreedyRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/GreedyRank)]  
+- [CloudRank](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6320550 "Zheng et al., TPDS'2013"): [[benchmarks/ranking-based/CloudRank](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Ranking-based/CloudRank)] 
 
 
 ##Dependencies
@@ -88,7 +88,7 @@ The algorithms in WS-DREAM are mostly implemented in C++ and further wrapped up 
 
 1. Install `wsdream` package
     
-	Download the repo: `git clone https://github.com/wsdream/WS-DREAM.git`,
+  Download the repo at: https://github.com/wsdream/WS-DREAM/tarball/master,
   
   then install the package `python setup.py install --user`. 
 
