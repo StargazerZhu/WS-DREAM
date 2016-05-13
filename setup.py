@@ -100,6 +100,12 @@ if use_cython:
                               "wsdream/NIMF/NIMF.pyx"],
                               language='c++',
                               include_dirs=py_inc + np_inc,
+                              extra_compile_args=["-O2"]),
+                    Extension("wsdream.WSPred", 
+                              ["wsdream/WSPred/c_WSPred.cpp",
+                              "wsdream/WSPred/WSPred.pyx"],
+                              language='c++',
+                              include_dirs=py_inc + np_inc,
                               extra_compile_args=["-O2"])
                               ]
 
@@ -137,6 +143,11 @@ else:
                               ["wsdream/NIMF/c_NIMF.cpp",
                               "wsdream/NIMF/c_UIPCC.cpp",
                               "wsdream/NIMF/NIMF.cpp"],
+                              include_dirs=py_inc + np_inc),
+                    Extension("wsdream.WSPred", 
+                              ["wsdream/WSPred/c_WSPred.cpp",
+                              "wsdream/WSPred/c_WSPred.cpp",
+                              "wsdream/WSPred/WSPred.cpp"],
                               include_dirs=py_inc + np_inc)
                               ]
 
@@ -151,7 +162,6 @@ classifiers = ['Intended Audience :: Science/Research',
 
 setup(name = 'wsdream',
       version='1.0',
-      requires=['numpy (>=1.8.1)', 'scipy (>=0.13.3)'],
       description=description,
       author='WS-DREAM Team',
       author_email='wsdream.maillist@gmail.com',
@@ -164,7 +174,7 @@ setup(name = 'wsdream',
       ext_modules=ext_modules,
       scripts=scripts,
       data_files=data_files,
-      install_requires=REQUIREMENTS
+      requires=REQUIREMENTS
       )
 
 print('==============================================')

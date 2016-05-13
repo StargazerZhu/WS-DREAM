@@ -60,9 +60,9 @@ With both datasets and source code publicly released, WS-DREAM repository would 
 - [UIPCC](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5674010 "Zheng et al., TSC'2011"): [[benchmarks/time-aware/UIPCC](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/UIPCC)]
 - [PMF](http://dl.acm.org/citation.cfm?id=2430548 "Zheng et al., TOSEM'2013"): [[benchmarks/time-aware/PMF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/PMF)]
 - [TF](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/TF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/TF)] 
-- [WSPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/WSPred](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/WSPred)]  
+- [WSPred](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6132969&tag=1 "Zhang et al., ISSRE'2011"): [[benchmarks/time-aware/WSPred](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/WSPred)]  
 - [CLUS](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6874541 "Silic et al., FSE'2013"): [[benchmarks/time-aware/CLUS](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/CLUS)]
-- [NTF](http://dl.acm.org/citation.cfm?id=2568001 "Zhang et al., WWW'2014"): [[benchmarks/time-aware/NTF](https://github.com/wsdream/WS-DREAM/tree/76b35a6a21c5d209a1897c4719a5e32a3e79c782/Time-aware/NTF)]
+- [NTF](http://dl.acm.org/citation.cfm?id=2568001 "Zhang et al., WWW'2014"): [[benchmarks/time-aware/NTF](https://github.com/wsdream/WS-DREAM/tree/master/benchmarks/time-aware/NTF)]
 - [TD-WSRec](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6928878 "Hu et al., ICWS'14"): [benchmarks/time-aware/TD_WSRec] 
   
 ####Online prediction approaches
