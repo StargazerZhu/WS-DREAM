@@ -151,7 +151,8 @@ def getPrecision(matrix, predRankMatrix, topK):
         num_hits = 0.0
         kk = min(topK, len(updatedRealVec))
         for j in range(kk):
-            if np.sum(updatedRealVec[:(j+1)] == updatedRealVec[j]) > 0:
+            tmp = updatedRealVec[updatedRealVec == updatedPredictVec[j]]
+            if tmp.size != 0:
                 num_hits += 1.0
         precision += num_hits / kk
     return precision/numUser
