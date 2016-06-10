@@ -40,8 +40,8 @@ def execute(matrix, para):
 def executeOneSetting(matrix, density, roundId, para):
     logger.info('density=%.2f, %2d-round starts.'%(density, roundId + 1))
     
-    # remove data matrix    
-    (trainMatrix, testMatrix) = evallib.removeEntries(matrix, density, roundId) 
+    # remove data matrix
+    (trainMatrix, testMatrix) = evallib.removeEntries(matrix, density, roundId)
 
     # QoS prediction
     startTime = time.clock() # to record the running time for one round             

@@ -27,17 +27,17 @@ import dataloader
 # config area
 #
 para = {'dataType': 'rt', # set the dataType as 'rt' or 'tp'
-        'dataPath': './',
+        'dataPath': '../../../data/small_scale',
         'outPath': 'result/',
         'metrics': [('Precision', [1, 5, 10, 50, 100])], # evaluation metrics
-        'density': list(np.arange(0.05, 0.31, 0.05)), # matrix density
-        'rounds': 20, # how many runs are performed at each matrix density
+        'density': [0.1], # matrix density
+        'rounds': 10, # how many runs are performed at each matrix density
         'topK': 10, # the parameter of TopK similar users, the default value is
                     # topK = 10 as in the reference paper
         'saveTimeInfo': False, # whether to keep track of the running time
         'saveLog': True, # whether to save log into file
         'debugMode': False, # whether to record the debug info
-        'parallelMode': True # whether to leverage multiprocessing for speedup
+        'parallelMode': False # whether to leverage multiprocessing for speedup
         }
 
 initConfig(para)

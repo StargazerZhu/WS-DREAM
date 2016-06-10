@@ -146,14 +146,14 @@ def getPrecision(matrix, predRankMatrix, topK):
         predictVec = realVec[predRankMatrix[uid, :]]
         # filter out the invalid values (-1)
         updatedRealVec = realVec[realVec > 0]
-        updatedRealVec = sorted(updatedRealVec, reverse=True)
-        updatedPredictVec = predictVec[predictVec > 0]
+        updatedRealVec = np.array(sorted(updatedRealVec, reverse=True))
+        updatedPredictVec = np.array(predictVec[predictVec > 0])
         num_hits = 0.0
         kk = min(topK, len(updatedRealVec))
         for j in range(kk):
-            tmp = updatedRealVec[updatedRealVec == updatedPredictVec[j]]
-            if tmp.size != 0:
+            tmp = updatedRealVec[:kk] == updatedPredictVec[j]
+            if np.sum(tmp) > 0:
                 num_hits += 1.0
-        precision += num_hits / kk
+        precision += num_hits / topK
     return precision/numUser
 ########################################################

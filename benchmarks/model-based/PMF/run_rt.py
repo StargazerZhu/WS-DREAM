@@ -17,12 +17,13 @@ import evaluator
 
 # parameter config area
 para = {'dataPath': '../../../data/',
-		'dataName': 'dataset#1',
+		'dataName': 'small_scale',
 		'dataType': 'rt', # set the dataType as 'rt' or 'tp'
 		'outPath': 'result/',
-		'metrics': ['MAE', 'NMAE', 'RMSE', 'MRE', 'NPRE'], # delete where appropriate
-		'density': np.arange(0.05, 0.31, 0.05), # matrix density
-		'rounds': 20, # how many runs are performed at each matrix density
+		'metrics': ['NDCG', 'Precision'], # delete where appropriate
+		'metric_parameter': [1, 5, 10, 50, 100],
+		'density': [0.1], # matrix density
+		'rounds': 10, # how many runs are performed at each matrix density
 		'dimension': 10, # dimenisionality of the latent factors
 		'etaInit': 0.01, # inital learning rate. We use line search
 						 # to find the best eta at each iteration

@@ -20,7 +20,10 @@ def evaluate(testMatrix, recoveredMatrix, para):
     (testVecX, testVecY) = np.where(testMatrix > 0)
     testVec = testMatrix[testVecX, testVecY]
     estiVec = recoveredMatrix[testVecX, testVecY]
-    evalResult = errMetric(testVec, estiVec, para['metrics'])
+    if para['metric_parameter'] is not None:
+        evalResult = errMetricMatrix(testMatrix, recoveredMatrix, para['metrics'], para['metric_parameter'])
+    else:
+        evalResult = errMetric(testVec, estiVec, para['metrics'])
     return evalResult
 
 
@@ -63,6 +66,8 @@ def errMetric(realVec, estiVec, metrics):
     absError = np.abs(estiVec - realVec) 
     mae = np.average(absError)
     for metric in metrics:
+        if isinstance(metrics, tuple):
+            return 'Ranking Metric'
         if 'MAE' == metric:
             result = np.append(result, mae)
         if 'NMAE' == metric:
@@ -82,13 +87,62 @@ def errMetric(realVec, estiVec, metrics):
     return result
 
 
+def errMetricMatrix(realMatrix, estiMatrix, metrics, metric_para):
+    results = []
+    for metric in metrics:
+        for topK in metric_para:
+            result = getMetricMatrix(realMatrix, estiMatrix, metric, topK)
+            results = np.append(results, result)
+    return results
+
+
+def getMetricMatrix(realMatrix, estiMatrix, metric, topK):
+    numUser = realMatrix.shape[0]
+    numService = realMatrix.shape[1]
+    result = 0.0
+    realOrder = np.argsort(realMatrix)
+    estiOrder = np.argsort(estiMatrix)
+    for uid in range(numUser):
+        # kk = min(topK, len(updatedRealVec))
+        kk = topK
+        if metric == 'Precision':
+            nz = np.arange(numService)
+            actual_i = nz[realOrder[uid, :]][0:kk]
+            pred_i = nz[estiOrder[uid, :]][0:kk]
+            num_hits = 0.0
+            for j in range(kk):
+                tmp = actual_i[:kk] == pred_i[j]
+                if np.sum(tmp) > 0:
+                    num_hits += 1.0
+            precision = num_hits / topK
+            result += precision
+        elif metric == 'NDCG':
+            realVec = realMatrix[uid, :]
+            predictVec = estiMatrix[uid, :]
+            # filter out the invalid values (-1)
+            updatedRealVec = realVec[realVec > 0]
+            updatedRealVec = sorted(updatedRealVec, reverse=True)
+            updatedPredictVec = predictVec[predictVec > 0]
+            dcg_k = 0.0
+            idcg_k = 0.0
+            for j in range(min(topK, len(updatedRealVec))):
+                if j == 0:
+                    dcg_k += updatedPredictVec[0]
+                    idcg_k += updatedRealVec[0]
+                else:
+                    dcg_k += updatedPredictVec[j] / np.log2(j + 1)
+                    idcg_k += updatedRealVec[j] / np.log2(j + 1)
+            ndcg_k = dcg_k / (idcg_k + np.spacing(1))
+            result += ndcg_k
+    return result / numUser
+
 #======================================================#
 # Dump the raw result into tmp file
 #======================================================#
 def dumpresult(outFile, result):
     try:
         with open(outFile, 'wb') as fid:
-                pickle.dump(result, fid)
+            pickle.dump(result, fid)
     except Exception, e:
         logger.error('Dump file failed: ' + outFile)
         logger.error(e)
@@ -100,8 +154,12 @@ def dumpresult(outFile, result):
 #======================================================#
 def summarizeResult(para):
     path = '%s%s_%s_result'%(para['outPath'], para['dataName'], para['dataType'])
-    evalResults = np.zeros((len(para['density']), para['rounds'], len(para['metrics']))) 
-    timeResults = np.zeros((len(para['density']), para['rounds']))   
+    timeResults = np.zeros((len(para['density']), para['rounds']))
+    if para['metric_parameter'] is None:
+        evalResults = np.zeros((len(para['density']), para['rounds'], len(para['metrics'])))
+    else:
+        evalResults = np.zeros((len(para['density']), para['rounds'],
+                                len(para['metrics']), len(para['metric_parameter'])))
 
     k = 0
     for den in para['density']:
@@ -131,7 +189,10 @@ def saveSummaryResult(outfile, result, timeinfo, para):
     k = 0
     for den in para['density']:
         fileID.write('density=%.2f: '%den)
-        avgResult = np.average(result[k, :, :], axis=0)
+        if para['metric_parameter'] is None:
+            avgResult = np.average(result[k, :, :], axis=0)
+        else:
+            avgResult = np.average(result[k, :, :, :], axis=0)
         np.savetxt(fileID, np.matrix(avgResult), fmt='%.4f', delimiter='  ')
         print 'density=%.2f: '%den, avgResult
         k += 1
