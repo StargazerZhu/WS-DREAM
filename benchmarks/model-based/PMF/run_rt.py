@@ -27,7 +27,7 @@ para = {'dataPath': '../../../data/',
 		'dimension': 10, # dimenisionality of the latent factors
 		'etaInit': 0.01, # inital learning rate. We use line search
 						 # to find the best eta at each iteration
-		'lambda': 40, # regularization parameter
+		'lambda': 0.1, # regularization parameter
 		'maxIter': 300, # the max iterations
 		'saveTimeInfo': False, # whether to keep track of the running time
 		'saveLog': True, # whether to save log into file

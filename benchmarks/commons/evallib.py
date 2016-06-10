@@ -24,6 +24,7 @@ def evaluate(testMatrix, recoveredMatrix, para):
         evalResult = errMetricMatrix(testMatrix, recoveredMatrix, para['metrics'], para['metric_parameter'])
     else:
         evalResult = errMetric(testVec, estiVec, para['metrics'])
+
     return evalResult
 
 
@@ -90,9 +91,14 @@ def errMetric(realVec, estiVec, metrics):
 def errMetricMatrix(realMatrix, estiMatrix, metrics, metric_para):
     results = []
     for metric in metrics:
+        result = []
         for topK in metric_para:
-            result = getMetricMatrix(realMatrix, estiMatrix, metric, topK)
-            results = np.append(results, result)
+            tmp = getMetricMatrix(realMatrix, estiMatrix, metric, topK)
+            result = np.append(result, tmp)
+        if len(results) == 0:
+            results = result
+        else:
+            results = np.vstack((results, result))
     return results
 
 
@@ -168,7 +174,7 @@ def summarizeResult(para):
             with open(inputfile, 'rb') as fid:
                 data = pickle.load(fid)
             os.remove(inputfile)
-            (evalResults[k, rnd, :], timeResults[k, rnd]) = data
+            (evalResults[k, rnd, :, :], timeResults[k, rnd]) = data
         k += 1
     saveSummaryResult(path, evalResults, timeResults, para)  
 
@@ -185,30 +191,49 @@ def saveSummaryResult(outfile, result, timeinfo, para):
     for metric in para['metrics']:
         fileID.write('|   %s  '%metric)
     fileID.write('\n')
+    fileID.write('Metric Parameters:    ')
+    for metric_para in para['metric_parameter']:
+        fileID.write('|   %s  ' % metric_para)
+    fileID.write('\n')
     fileID.write('[Average]\n')
     k = 0
     for den in para['density']:
-        fileID.write('density=%.2f: '%den)
         if para['metric_parameter'] is None:
+            fileID.write('density=%.2f: ' % den)
             avgResult = np.average(result[k, :, :], axis=0)
+            np.savetxt(fileID, np.matrix(avgResult), fmt='%.4f', delimiter='  ')
         else:
+            fileID.write('density=%.2f: \n' % den)
             avgResult = np.average(result[k, :, :, :], axis=0)
-        np.savetxt(fileID, np.matrix(avgResult), fmt='%.4f', delimiter='  ')
+            for i, metric in enumerate(para['metrics']):
+                np.savetxt(fileID, np.matrix(avgResult[i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
+            fileID.write('\n')
         print 'density=%.2f: '%den, avgResult
         k += 1
     fileID.write('\n[Standard deviation (std)]\n')
     k = 0
     for den in para['density']:
-        fileID.write('density=%.2f: '%den)
-        np.savetxt(fileID, np.matrix(np.std(result[k, :, :], axis=0)), fmt='%.4f', delimiter='  ')
+        if para['metric_parameter'] is None:
+            fileID.write('density=%.2f: ' % den)
+            stdResult = np.std(result[k, :, :], axis=0)
+            np.savetxt(fileID, np.matrix(stdResult), fmt='%.4f', delimiter='  ')
+        else:
+            fileID.write('density=%.2f: \n' % den)
+            stdResult = np.std(result[k, :, :, :], axis=0)
+            for i, metric in enumerate(para['metrics']):
+                np.savetxt(fileID, np.matrix(stdResult[i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
+            fileID.write('\n')
+        print 'density=%.2f: ' % den, stdResult
         k += 1
 
     fileID.write('\n======== Detailed results ========\n')
     k = 0
     for den in para['density']:
         fileID.write('[density=%.2f, %2d rounds]\n'%(den, para['rounds']))
-        np.savetxt(fileID, np.matrix(result[k, :, :]), fmt='%.4f', delimiter='  ')
-        fileID.write('\n')
+        for rnd in xrange(para['rounds']):
+            for i, metric in enumerate(para['metrics']):
+                np.savetxt(fileID, np.matrix(result[k, rnd, i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
+            fileID.write('\n')
         k += 1
     fileID.close()
 
