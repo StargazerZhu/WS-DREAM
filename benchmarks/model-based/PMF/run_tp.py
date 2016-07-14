@@ -17,11 +17,12 @@ import evaluator
 
 # parameter config area
 para = {'dataPath': '../../../data/',
-		'dataName': 'dataset#1',
+		'dataName': 'small_scale',
 		'dataType': 'tp', # set the dataType as 'rt' or 'tp'
 		'outPath': 'result/',
-		'metrics': ['MAE', 'NMAE', 'RMSE', 'MRE', 'NPRE'], # delete where appropriate
-		'density': np.arange(0.05, 0.31, 0.05), # matrix density
+		'metrics': ['MRE'], # delete where appropriate
+		# 'metric_parameter': [1, 5, 10, 50, 100],
+		'density': [0.3], # matrix density
 		'rounds': 20, # how many runs are performed at each matrix density
 		'dimension': 10, # dimenisionality of the latent factors
 		'etaInit': 0.001, # inital learning rate. We use line search

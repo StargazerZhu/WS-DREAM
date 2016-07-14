@@ -20,7 +20,7 @@ def evaluate(testMatrix, recoveredMatrix, para):
     (testVecX, testVecY) = np.where(testMatrix > 0)
     testVec = testMatrix[testVecX, testVecY]
     estiVec = recoveredMatrix[testVecX, testVecY]
-    if para['metric_parameter'] is not None:
+    if para.get('metric_parameter') is not None:
         evalResult = errMetricMatrix(testMatrix, recoveredMatrix, para['metrics'], para['metric_parameter'])
     else:
         evalResult = errMetric(testVec, estiVec, para['metrics'])
@@ -108,13 +108,15 @@ def getMetricMatrix(realMatrix, estiMatrix, metric, topK):
     result = 0.0
     realOrder = np.argsort(realMatrix)
     estiOrder = np.argsort(estiMatrix)
+    # realMatrix = np.exp(-(realMatrix))
+    # estiMatrix = np.exp(-(estiMatrix))
     for uid in range(numUser):
         # kk = min(topK, len(updatedRealVec))
         kk = topK
         if metric == 'Precision':
             nz = np.arange(numService)
-            actual_i = nz[realOrder[uid, :]][0:kk]
-            pred_i = nz[estiOrder[uid, :]][0:kk]
+            actual_i = nz[realOrder[uid, :]]
+            pred_i = nz[estiOrder[uid, :]]
             num_hits = 0.0
             for j in range(kk):
                 tmp = actual_i[:kk] == pred_i[j]
@@ -123,12 +125,17 @@ def getMetricMatrix(realMatrix, estiMatrix, metric, topK):
             precision = num_hits / topK
             result += precision
         elif metric == 'NDCG':
+            nz = np.arange(numService)
             realVec = realMatrix[uid, :]
             predictVec = estiMatrix[uid, :]
+            I = np.argsort(predictVec, )[::-1]
+            ideal_I = np.argsort(realVec)[::-1]
             # filter out the invalid values (-1)
-            updatedRealVec = realVec[realVec > 0]
-            updatedRealVec = sorted(updatedRealVec, reverse=True)
-            updatedPredictVec = predictVec[predictVec > 0]
+            # updatedRealVec = realVec[realVec > 0]
+            updatedRealVec = realVec[nz[ideal_I]]
+            updatedPredictVec = realVec[nz[I]]
+            # updatedPredictVec = predictVec[predictVec > 0]
+
             dcg_k = 0.0
             idcg_k = 0.0
             for j in range(min(topK, len(updatedRealVec))):
@@ -161,7 +168,7 @@ def dumpresult(outFile, result):
 def summarizeResult(para):
     path = '%s%s_%s_result'%(para['outPath'], para['dataName'], para['dataType'])
     timeResults = np.zeros((len(para['density']), para['rounds']))
-    if para['metric_parameter'] is None:
+    if para.get('metric_parameter') is None:
         evalResults = np.zeros((len(para['density']), para['rounds'], len(para['metrics'])))
     else:
         evalResults = np.zeros((len(para['density']), para['rounds'],
@@ -174,7 +181,10 @@ def summarizeResult(para):
             with open(inputfile, 'rb') as fid:
                 data = pickle.load(fid)
             os.remove(inputfile)
-            (evalResults[k, rnd, :, :], timeResults[k, rnd]) = data
+            if para.get('metric_parameter') is None:
+                (evalResults[k, rnd, :], timeResults[k, rnd]) = data
+            else:
+                (evalResults[k, rnd, :, :], timeResults[k, rnd]) = data
         k += 1
     saveSummaryResult(path, evalResults, timeResults, para)  
 
@@ -192,13 +202,14 @@ def saveSummaryResult(outfile, result, timeinfo, para):
         fileID.write('|   %s  '%metric)
     fileID.write('\n')
     fileID.write('Metric Parameters:    ')
-    for metric_para in para['metric_parameter']:
-        fileID.write('|   %s  ' % metric_para)
+    if para.get('metric_parameter'):
+        for metric_para in para['metric_parameter']:
+            fileID.write('|   %s  ' % metric_para)
     fileID.write('\n')
     fileID.write('[Average]\n')
     k = 0
     for den in para['density']:
-        if para['metric_parameter'] is None:
+        if para.get('metric_parameter') is None:
             fileID.write('density=%.2f: ' % den)
             avgResult = np.average(result[k, :, :], axis=0)
             np.savetxt(fileID, np.matrix(avgResult), fmt='%.4f', delimiter='  ')
@@ -208,12 +219,12 @@ def saveSummaryResult(outfile, result, timeinfo, para):
             for i, metric in enumerate(para['metrics']):
                 np.savetxt(fileID, np.matrix(avgResult[i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
             fileID.write('\n')
-        print 'density=%.2f: '%den, avgResult
+        print 'density=%.2f: Average: '%den, avgResult
         k += 1
     fileID.write('\n[Standard deviation (std)]\n')
     k = 0
     for den in para['density']:
-        if para['metric_parameter'] is None:
+        if para.get('metric_parameter') is None:
             fileID.write('density=%.2f: ' % den)
             stdResult = np.std(result[k, :, :], axis=0)
             np.savetxt(fileID, np.matrix(stdResult), fmt='%.4f', delimiter='  ')
@@ -223,17 +234,21 @@ def saveSummaryResult(outfile, result, timeinfo, para):
             for i, metric in enumerate(para['metrics']):
                 np.savetxt(fileID, np.matrix(stdResult[i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
             fileID.write('\n')
-        print 'density=%.2f: ' % den, stdResult
+        print 'density=%.2f: StdDev:  ' % den, stdResult
         k += 1
 
     fileID.write('\n======== Detailed results ========\n')
     k = 0
     for den in para['density']:
         fileID.write('[density=%.2f, %2d rounds]\n'%(den, para['rounds']))
-        for rnd in xrange(para['rounds']):
-            for i, metric in enumerate(para['metrics']):
-                np.savetxt(fileID, np.matrix(result[k, rnd, i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
+        if para.get('metric_parameter') is None:
+            np.savetxt(fileID, np.matrix(result[k, :, :]), fmt='%.4f', delimiter='  ')
             fileID.write('\n')
+        else:
+            for rnd in xrange(para['rounds']):
+                for i, metric in enumerate(para['metrics']):
+                    np.savetxt(fileID, np.matrix(result[k, rnd, i, :]), fmt='%.4f', delimiter='  ', newline=' | ')
+                fileID.write('\n')
         k += 1
     fileID.close()
 

@@ -27,9 +27,9 @@ import dataloader
 # config area
 #
 para = {'dataType': 'rt', # set the dataType as 'rt' or 'tp'
-        'dataPath': '../../../data/small_scale',
+        'dataPath': '../../../data/small_scale/',
         'outPath': 'result/',
-        'metrics': [('Precision', [1, 5, 10, 50, 100])], # evaluation metrics
+        'metrics': [('NDCG', [1, 5, 10, 50, 100]), ('Precision', [1,5,10,50,100])], # evaluation metrics
         'density': [0.1], # matrix density
         'rounds': 10, # how many runs are performed at each matrix density
         'topK': 10, # the parameter of TopK similar users, the default value is
@@ -37,7 +37,7 @@ para = {'dataType': 'rt', # set the dataType as 'rt' or 'tp'
         'saveTimeInfo': False, # whether to keep track of the running time
         'saveLog': True, # whether to save log into file
         'debugMode': False, # whether to record the debug info
-        'parallelMode': False # whether to leverage multiprocessing for speedup
+        'parallelMode': True # whether to leverage multiprocessing for speedup
         }
 
 initConfig(para)

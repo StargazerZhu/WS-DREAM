@@ -113,9 +113,12 @@ def getNDCG(matrix, predRankMatrix, topK):
     numUser = matrix.shape[0]
     numService = matrix.shape[1]
     ndcg = 0
+
     for uid in range(numUser):
         realVec = matrix[uid, :]
         predictVec = realVec[predRankMatrix[uid, :]]
+        # realVec = 1/realVec
+        # predictVec = 1/predictVec
         # filter out the invalid values (-1)
         updatedRealVec = realVec[realVec > 0]
         updatedRealVec = sorted(updatedRealVec, reverse=True)

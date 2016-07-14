@@ -20,8 +20,8 @@ para = {'dataPath': '../../../data/',
 		'dataName': 'small_scale',
 		'dataType': 'rt', # set the dataType as 'rt' or 'tp'
 		'outPath': 'result/',
-		'metrics': ['NDCG', 'Precision'], # delete where appropriate
-		'metric_parameter': [1, 5, 10, 50, 100],
+		'metrics': ['RMSE', 'NPRE'], # delete where appropriate
+		# 'metric_parameter': [1, 5, 10, 50, 100],
 		'density': [0.1], # matrix density
 		'rounds': 10, # how many runs are performed at each matrix density
 		'dimension': 10, # dimenisionality of the latent factors
