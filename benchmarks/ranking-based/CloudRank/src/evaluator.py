@@ -115,14 +115,16 @@ def getNDCG(matrix, predRankMatrix, topK):
     ndcg = 0
 
     for uid in range(numUser):
-        realVec = matrix[uid, :]
-        predictVec = realVec[predRankMatrix[uid, :]]
-        # realVec = 1/realVec
-        # predictVec = 1/predictVec
-        # filter out the invalid values (-1)
-        updatedRealVec = realVec[realVec > 0]
-        updatedRealVec = sorted(updatedRealVec, reverse=True)
-        updatedPredictVec = predictVec[predictVec > 0]
+        nz = np.where(matrix[uid] > 0)[0]
+        realVec = matrix[uid, nz]
+        predictVec = predRankMatrix[uid, nz]
+
+        I = np.argsort(-predictVec)
+        ideal_I = np.argsort(-realVec)
+
+        updatedRealVec = realVec[ideal_I[nz]]
+        updatedPredictVec = realVec[I[nz]]
+
         dcg_k = 0
         idcg_k = 0
         for j in range(min(topK, len(updatedRealVec))):

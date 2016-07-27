@@ -27,7 +27,7 @@ import dataloader
 # config area
 #
 para = {'dataType': 'rt', # set the dataType as 'rt' or 'tp'
-        'dataPath': '../../../data/small_scale/',
+        'dataPath': '../../../data/dataset#1/',
         'outPath': 'result/',
         'metrics': [('NDCG', [1, 5, 10, 50, 100]), ('Precision', [1,5,10,50,100])], # evaluation metrics
         'density': [0.1], # matrix density

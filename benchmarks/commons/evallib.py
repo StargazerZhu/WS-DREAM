@@ -106,34 +106,35 @@ def getMetricMatrix(realMatrix, estiMatrix, metric, topK):
     numUser = realMatrix.shape[0]
     numService = realMatrix.shape[1]
     result = 0.0
-    realOrder = np.argsort(realMatrix)
-    estiOrder = np.argsort(estiMatrix)
-    # realMatrix = np.exp(-(realMatrix))
-    # estiMatrix = np.exp(-(estiMatrix))
+    realOrder = np.argsort(-realMatrix)
+    estiOrder = np.argsort(-estiMatrix)
     for uid in range(numUser):
         # kk = min(topK, len(updatedRealVec))
         kk = topK
         if metric == 'Precision':
-            nz = np.arange(numService)
-            actual_i = nz[realOrder[uid, :]]
-            pred_i = nz[estiOrder[uid, :]]
+            nz = np.where(realMatrix[uid] > 0)[0]
+            actual_i = realOrder[nz]
+            pred_i = estiOrder[nz]
             num_hits = 0.0
+            precision = 0.0
             for j in range(kk):
-                tmp = actual_i[:kk] == pred_i[j]
-                if np.sum(tmp) > 0:
+                cond1 = np.sum(actual_i[:kk] == pred_i[j]) > 0
+                cond2 = np.sum(pred_i[:j] == pred_i[j]) == 0
+                if cond1 and cond2:
                     num_hits += 1.0
-            precision = num_hits / topK
+                    precision += num_hits / (j+1.0)
+            precision /= kk
             result += precision
         elif metric == 'NDCG':
-            nz = np.arange(numService)
-            realVec = realMatrix[uid, :]
-            predictVec = estiMatrix[uid, :]
-            I = np.argsort(predictVec, )[::-1]
-            ideal_I = np.argsort(realVec)[::-1]
+            nz = np.where(realOrder[uid] > 0)[0]
+            realVec = realMatrix[uid, nz]
+            predictVec = estiMatrix[uid, nz]
+            I = np.argsort(-predictVec)
+            ideal_I = np.argsort(-realVec)
             # filter out the invalid values (-1)
             # updatedRealVec = realVec[realVec > 0]
-            updatedRealVec = realVec[nz[ideal_I]]
-            updatedPredictVec = realVec[nz[I]]
+            updatedRealVec = realVec[ideal_I[nz]]
+            updatedPredictVec = realVec[I[nz]]
             # updatedPredictVec = predictVec[predictVec > 0]
 
             dcg_k = 0.0
